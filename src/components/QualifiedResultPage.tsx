@@ -143,7 +143,7 @@ export const QualifiedResultPage: React.FC<QualifiedResultProps> = ({ scores, re
                 </div>
                 
                 <button 
-                  onClick={() => window.location.href = 'https://buy.stripe.com/cNi8wQdRi8PJ7cG2oQew800'}
+                  onClick={() => window.location.href = 'https://buy.stripe.com/bJe3cwcNe0jd54y1kMew806'}
                   className="w-full bg-brand-accent hover:opacity-90 text-white py-5 rounded-2xl font-display font-bold text-lg transition-all flex items-center justify-center gap-2 group cursor-pointer"
                 >
                   PAY APPLICATION FEE — $97 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
