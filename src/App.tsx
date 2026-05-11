@@ -249,7 +249,7 @@ const CheckoutPage = ({ onBack }: { onBack: () => void }) => {
                 <div className="grid gap-4">
                   <div className="group relative">
                     <button 
-                      onClick={() => window.location.href = 'https://buy.stripe.com/cNi8wQdRi8PJ7cG2oQew800'}
+                      onClick={() => window.location.href = 'https://buy.stripe.com/bJe3cwcNe0jd54y1kMew806'}
                       className="w-full bg-brand-primary hover:bg-slate-800 text-white p-5 md:p-6 rounded-xl md:rounded-2xl flex flex-col sm:flex-row sm:items-center justify-between gap-4 transition-all duration-300 shadow-xl shadow-brand-primary/20 cursor-pointer text-left"
                     >
                       <div className="flex items-center gap-4 md:gap-6">
