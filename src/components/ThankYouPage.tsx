@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { motion } from 'motion/react';
 import { 
   CheckCircle2, 
-  Calendar, 
+   Calendar, 
   Mail, 
   MessageSquare, 
   Phone, 
@@ -18,6 +18,16 @@ interface ThankYouPageProps {
 }
 
 const ThankYouPage: React.FC<ThankYouPageProps> = ({ onBackToHome }) => {
+  useEffect(() => {
+    // Track Lead event when thank you page is reached
+    if (typeof window !== 'undefined' && (window as any).fbq) {
+      (window as any).fbq('track', 'Lead', {
+        content_name: 'China Business Retreat Application',
+        status: 'deposit_secured'
+      });
+    }
+  }, []);
+
   // Generate a mock application ID
   const appId = `CRA-2026-${Math.random().toString(36).substring(2, 6).toUpperCase()}`;
 

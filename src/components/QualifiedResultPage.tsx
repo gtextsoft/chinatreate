@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { motion } from 'motion/react';
 import { Check, ShieldCheck, Clock, ArrowRight, Star, HelpCircle } from 'lucide-react';
 
@@ -9,6 +9,18 @@ interface QualifiedResultProps {
 }
 
 export const QualifiedResultPage: React.FC<QualifiedResultProps> = ({ scores, responses, onApply }) => {
+  useEffect(() => {
+    // Track ViewContent for qualified users
+    if (typeof window !== 'undefined' && (window as any).fbq) {
+      (window as any).fbq('track', 'ViewContent', {
+        content_name: 'Qualified Results - China Business Retreat',
+        content_category: 'Assessment',
+        value: 12500,
+        currency: 'USD'
+      });
+    }
+  }, []);
+
   // Simple personalization
   const industry = responses.q2 === 'ecommerce' ? 'e-commerce' : 
                    responses.q2 === 'manufacturing' ? 'manufacturing' : 
