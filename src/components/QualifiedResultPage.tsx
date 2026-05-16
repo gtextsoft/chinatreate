@@ -2,6 +2,8 @@ import React, { useEffect } from 'react';
 import { motion } from 'motion/react';
 import { Check, ShieldCheck, Clock, ArrowRight, Star, HelpCircle } from 'lucide-react';
 
+import { trackCapiEvent } from '../lib/fbcapi';
+
 interface QualifiedResultProps {
   scores: any;
   responses: any;
@@ -11,8 +13,19 @@ interface QualifiedResultProps {
 export const QualifiedResultPage: React.FC<QualifiedResultProps> = ({ scores, responses, onApply }) => {
   useEffect(() => {
     // Track ViewContent for qualified users
-    if (typeof window !== 'undefined' && (window as any).fbq) {
-      (window as any).fbq('track', 'ViewContent', {
+    if (typeof window !== 'undefined') {
+      // Browser Pixel
+      if ((window as any).fbq) {
+        (window as any).fbq('track', 'ViewContent', {
+          content_name: 'Qualified Results - China Business Retreat',
+          content_category: 'Assessment',
+          value: 12500,
+          currency: 'USD'
+        });
+      }
+
+      // Server-side CAPI
+      trackCapiEvent('ViewContent', {
         content_name: 'Qualified Results - China Business Retreat',
         content_category: 'Assessment',
         value: 12500,

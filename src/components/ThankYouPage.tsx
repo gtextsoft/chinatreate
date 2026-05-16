@@ -13,6 +13,8 @@ import {
   ArrowRight
 } from 'lucide-react';
 
+import { trackCapiEvent } from '../lib/fbcapi';
+
 interface ThankYouPageProps {
   onBackToHome?: () => void;
 }
@@ -20,8 +22,17 @@ interface ThankYouPageProps {
 const ThankYouPage: React.FC<ThankYouPageProps> = ({ onBackToHome }) => {
   useEffect(() => {
     // Track Lead event when thank you page is reached
-    if (typeof window !== 'undefined' && (window as any).fbq) {
-      (window as any).fbq('track', 'Lead', {
+    if (typeof window !== 'undefined') {
+      // Browser Pixel
+      if ((window as any).fbq) {
+        (window as any).fbq('track', 'Lead', {
+          content_name: 'China Business Retreat Application',
+          status: 'deposit_secured'
+        });
+      }
+      
+      // Server-side CAPI
+      trackCapiEvent('Lead', {
         content_name: 'China Business Retreat Application',
         status: 'deposit_secured'
       });
